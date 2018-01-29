@@ -34,9 +34,9 @@ def populate():
 		{"title":"Flask",
 		"url":"http://flask.pocoo.org"} ]
 
-	cats = {"Python": {"pages": python_pages, 128, 64},
-		"Django": {"pages": django_pages, 64, 32},
-		"Other Frameworks": {"pages": other_pages, 32, 16} }
+	cats = {"Python": {"pages": python_pages, "views":128,"likes":64},
+		"Django": {"pages": django_pages, "views":64,"likes":32},
+		"Other Frameworks": {"pages": other_pages, "views":32,"likes":16} }
 
 		
 # If you want to add more catergories or pages, add them to the dictionaries above.
@@ -47,7 +47,7 @@ def populate():
 # for more information about how to iterate over a dictionary properly.
 
 	for cat, cat_data in cats.items():
-		c = add_cat(cat)
+		c = add_cat(cat, cat_data["views"], cat_data["likes"])
 		for p in cat_data["pages"]:
 			add_page(c, p["title"], p["url"])
 
@@ -64,7 +64,7 @@ def add_page(cat, title, url, views=0):
 	return p
 
 def add_cat(name, views, likes):
-	c = Category.objects.get_or_create(name=name, views=views, likes=likes)[0]
+	c = Category.objects.get_or_create(name=name, view = views, likes = likes)[0]
 	c.save()
 	return c
 
