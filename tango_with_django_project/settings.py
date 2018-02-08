@@ -18,6 +18,9 @@ print(__file__)
 print(os.path.dirname(__file__))
 print(os.path.dirname(os.path.dirname(__file__)))
 
+# new variable for the login - redirecting the uses to registration
+LOGIN_URL = '/rango/login/'
+
 # a new variable called TEMPLATE_DIR that will reference
 # your new templates directory.
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
