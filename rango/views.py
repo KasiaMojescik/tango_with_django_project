@@ -28,7 +28,7 @@ def index(request):
 def about(request):
 	context_dict = {}
 	visitor_cookie_handler(request)
-	context_dict['visit_count'] = request.session['visits']
+	context_dict['visits'] = request.session['visits']
 	response = render(request, 'rango/about.html', context=context_dict)
 	return response
 	
